@@ -51,11 +51,12 @@ public class Args {
                     break;
                 }
                 case "-col": {
-                    col = argument;
+                    col = args[i++];
                     break;
                 }
                 case "-exp": {
-                    exp = argument;
+                    exp = args[i++];
+                    break;
                 }
                 default: {
                     throw new MyInvalidArgumentException(argument);
