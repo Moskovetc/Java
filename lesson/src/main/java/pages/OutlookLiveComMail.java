@@ -53,6 +53,7 @@ public class OutlookLiveComMail extends AbstractPage {
 
     public void clickSaveDraftButton(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(saveDraftButton));
         wait.until(ExpectedConditions.elementToBeClickable(saveDraftButton));
         saveDraftButton.click();
     }

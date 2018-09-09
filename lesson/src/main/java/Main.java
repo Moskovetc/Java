@@ -24,8 +24,8 @@ public class Main {
         outlookLiveComMail.clickNewMessageButton();
         outlookLiveComMail.pullFieldToOfNewMessage("test.for.dexsys@outlook.com");
         outlookLiveComMail.pullFieldAddSubjectOfNewMessage("Test Message");
-//        outlookLiveComMail.clickDotDotDotOfNewMessageButton();
-//        outlookLiveComMail.clickSaveDraftButton();
+        outlookLiveComMail.clickDotDotDotOfNewMessageButton();
+        outlookLiveComMail.clickSaveDraftButton();
         outlookLiveComMail.clickDraftMessagesButton();
         outlookLiveComMail.clickMyAccountButton();
         outlookLiveComMail.clickSignoutButton();
