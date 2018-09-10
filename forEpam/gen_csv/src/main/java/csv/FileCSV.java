@@ -2,9 +2,9 @@ package main.java.csv;
 
 import main.java.cli.Args;
 import main.java.cli.MyInvalidArgumentException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -32,54 +32,37 @@ public class FileCSV {
         this.nameOutputFile = nameOutputFile;
     }
 
-    private void createOutputFile(){
+    private void createOutputFile() throws MyInvalidArgumentException {
         this.file = new File(nameOutputFile);
-        try {
-            while (true) {
-                if (!file.exists()) {
-                    file.createNewFile();
-                    break;
-                } else {
-                    System.err.println("Файл : " + nameOutputFile + " существует!");
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Перезаписать файл? [yes/no] : ");
-                    String choice = scanner.nextLine().toUpperCase();
-                    if (choice.equals("YES") || choice.equals("Y")) {
-                        break;
-                    } else if (choice.equals("NO") || choice.equals("N")) {
-                        scanner = new Scanner(System.in);
-                        System.out.println("Введите новое имя файла : ");
-                        Args args = new Args();
-                        String[] newOut = {"-out", scanner.nextLine()};
-                        try {
-                            args.parse(newOut);
-                        }catch (MyInvalidArgumentException e){}
-                        file = new File(args.getOut());
-                    }
-                }
+        String choice = "";
+        while (!"YES".equals(choice) && !"Y".equals(choice)) {
+            System.err.println("Файл : " + nameOutputFile + " существует!");
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Перезаписать файл? [yes/no] : ");
+            choice = scanner.nextLine().toUpperCase();
+            if (choice.equals("NO") || choice.equals("N")) {
+                scanner = new Scanner(System.in);
+                System.out.println("Введите новое имя файла : ");
+                Args args = new Args();
+                String[] newOut = {"-out", scanner.nextLine()};
+                args.parse(newOut);
+                file = new File(args.getOut());
+                break;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
-    public void generateCSVFile() {
-        Row row = new Row();
-        PrintWriter out = null;
-        row.setMaxlen(maxLen);
-        row.setNumberOfColumns(numberOfColumn);
+    public void generateCSVFile() throws MyInvalidArgumentException {
+        RandomDataGenerator randomDataGenerator = new RandomDataGenerator();
         createOutputFile();
-        try {
-            out = new PrintWriter(file.getAbsoluteFile());
+        try (PrintWriter out = new PrintWriter(file.getAbsoluteFile())) {
+            out.println(randomDataGenerator.generateRndColumnsRow(numberOfColumn, maxLen));
+            for (int i = 0; i < numberOfRows; i++) {
+                out.println(randomDataGenerator.generateRndDataRow(numberOfColumn, maxLen));
+            }
         } catch (FileNotFoundException e) {
             System.err.println(String.format("Файл с именем %s не найден!", nameOutputFile));
-            e.printStackTrace();
         }
-        out.println(row.generateRndColumnsRow());
-        for (int i = 0; i < numberOfRows; i++){
-            out.println(row.generateRndRow());
-        }
-        out.close();
     }
 }
 

@@ -1,102 +1,93 @@
 package main.java.csv;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class CSVSearch {
-    private String in;
-    private String out;
-    private String enc;
-    private String col;
-    private String exp;
+    private final InputOutput io;
+    private final String col;
+    private final String exp;
 
-    public void setIn(String in) {
-        this.in = in;
-    }
-
-    public void setOut(String out) {
-        this.out = out;
-    }
-
-    public void setEnc(String enc) {
-        this.enc = enc;
-    }
-
-    public void setCol(String col) {
+    public CSVSearch(InputOutput io, String col, String exp) {
+        this.io = io;
         this.col = col;
-    }
-
-    public void setExp(String exp) {
         this.exp = exp;
     }
 
-    public void search(){
+    private Column searchColumn(String[] columns) {
+        Column column = new Column();
+        int columnNumber = 0;
+        String columnType = null;
+        for (int i = 0; i < columns.length; i++) {
+            String[] nameAndType = columns[i].split(" ");
+            if (nameAndType[0].equals(col)) {
+                columnNumber = i;
+                columnType = nameAndType[1];
+            }
+        }
+        column.setColumnNumber(columnNumber);
+        column.setColumnType(columnType);
+        return column;
+    }
 
-        InputFile inputFile = new InputFile(in, enc);
-        OutputFile outputFile = new OutputFile(out, enc);
-        inputFile.openFile();
-        outputFile.openFile();
-        String line = inputFile.read();
+    private void searchValue(BufferedReader inputFile, BufferedWriter outputFile) throws NumberFormatException, IOException, FileEmptyException {
+        String line = inputFile.readLine();
         if (null != line) {
             String[] columns = line.split(";");
-            int columnNumber = 0;
-            String columnType = null;
-            for (int i = 0; i < columns.length; i++) {
-                String[] nameAndType = columns[i].split(" ");
-                if (nameAndType[0].equals(col)) {
-                    columnNumber = i;
-                    columnType = nameAndType[1];
+            Column column = searchColumn(columns);
+            outputFile.write(columns[column.getColumnNumber()] + ";\n");
+            line = inputFile.readLine();
+            try {
+                while (line != null) {
+                    columns = line.split(";");
+                    switch (column.getColumnType()) {
+                        case "Float": {
+                            if (Float.valueOf(exp).equals(Float.valueOf(columns[column.getColumnNumber()]))) {
+                                outputFile.write(columns[column.getColumnNumber()] + ";\n");
+                            }
+                            break;
+                        }
+                        case "Integer": {
+                            if (Integer.valueOf(exp).equals(Integer.valueOf(columns[column.getColumnNumber()]))) {
+                                outputFile.write(columns[column.getColumnNumber()] + ";\n");
+                            }
+                            break;
+                        }
+                        case "Date": {
+                            if (exp.equals(columns[column.getColumnNumber()])) {
+                                outputFile.write(columns[column.getColumnNumber()] + ";\n");
+                            }
+                            break;
+                        }
+                        case "String": {
+                            if (exp.equals(columns[column.getColumnNumber()])) {
+                                outputFile.write(columns[column.getColumnNumber()] + ";\n");
+                            }
+                            break;
+                        }
+                    }
+                    line = inputFile.readLine();
                 }
+            } catch (NumberFormatException e) {
+                System.err.println(String.format("Неверный тип выражения %s, тип столбца %s", exp, column.getColumnType()));
+                throw new NumberFormatException();
             }
-            outputFile.write(columns[columnNumber] + ";\n");
-            line = inputFile.read();
-            while (line != null){
-                columns = line.split(";");
-                switch (columnType){
-                    case "Float" : {
-                        try {
-                            if (Float.valueOf(exp).equals(Float.valueOf(columns[columnNumber]))){
-                                outputFile.write(columns[columnNumber]+ ";\n");
-                            }
-                        }catch (NumberFormatException e){
-                            System.err.println(String.format("Неверный тип выражения %s, тип столбца %s", exp, columnType));
-                            System.exit(1);
-                        }
-                        break;
-                    }
-                    case "Integer" :{
-                        try {
-                            if (Integer.valueOf(exp).equals(Integer.valueOf(columns[columnNumber]))){
-                                outputFile.write(columns[columnNumber]+ ";\n");
-                            }
-                        }catch (NumberFormatException e){
-                            System.err.println(String.format("Неверный тип выражения %s, тип столбца %s", exp, columnType));
-                            System.exit(1);
-                        }
-                        break;
-                    }
-                    case "Date" :{
-                        try {
-                            if (exp.equals(columns[columnNumber])){
-                                outputFile.write(columns[columnNumber]+ ";\n");
-                            }
-                        }catch (NumberFormatException e){
-                            System.err.println(String.format("Неверный тип выражения %s, тип столбца %s", exp, columnType));
-                            System.exit(1);
-                        }
-                        break;
-                    }
-                    case "String" : {
-                        if (exp.equals(columns[columnNumber])){
-                            outputFile.write(columns[columnNumber]+ ";\n");
-                        }
-                        break;
-                    }
-                }
-                line = inputFile.read();
-            }
-        }else {
-            System.out.println(String.format("Файл %s пуст!", in));
+        } else {
+            throw new FileEmptyException();
         }
-        inputFile.close();
-        outputFile.close();
+    }
+
+    public void search() throws NumberFormatException, IOException, FileEmptyException {
+        try (BufferedReader inputFile = io.openInputFile(); BufferedWriter outputFile = io.openOutputFile()) {
+            searchValue(inputFile, outputFile);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException();
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException();
+        }
+
     }
 
 }

@@ -8,17 +8,13 @@ public class Args {
     private int len;
     private String out;
 
-    private String tryGetCSVname(String value, String regExp) {
-        String DEFAULT_OUT_FILE_NAME = "out.csv";
-        try {
-            if (Pattern.matches(regExp, value)) {
-                return value;
-            } else {
-                throw new InvalidFileNameException(value, DEFAULT_OUT_FILE_NAME);
-            }
-        }catch (InvalidFileNameException e){
-            return DEFAULT_OUT_FILE_NAME;
-            }
+    private String tryGetCSVname(String value, String regExp) throws InvalidFileNameException {
+        if (Pattern.matches(regExp, value)) {
+            return value;
+        } else {
+            throw new InvalidFileNameException();
+        }
+
     }
 
     public void parse(String[] args) throws MyInvalidArgumentException {
@@ -26,25 +22,36 @@ public class Args {
         int i = 0;
         while (i < args.length) {
             argument = args[i++];
-            switch (argument) {
-                case "-col": {
-                    col = Integer.valueOf(args[i++]);
-                    break;
-                }
-                case "-row": {
-                    row = Integer.valueOf(args[i++]);
-                    break;
-                }
-                case "-len": {
-                    len = Integer.valueOf(args[i++]);
-                    break;
-                }
-                case "-out": {
-                    out = tryGetCSVname(args[i++], "^([a-zA-Z0-9_\\.-]+).csv$");
-                    break;
-                }
-                default: {
-                    throw new MyInvalidArgumentException(argument);
+            if (Pattern.matches("^-[a-z]+",argument)) {
+                switch (argument) {
+                    case "-col": {
+                        col = Integer.valueOf(args[i++]);
+                        break;
+                    }
+                    case "-row": {
+                        row = Integer.valueOf(args[i++]);
+                        break;
+                    }
+                    case "-len": {
+                        len = Integer.valueOf(args[i++]);
+                        break;
+                    }
+                    case "-out": {
+                        String defaulFileName = "out.csv";
+                        String fileName = args[i++];
+                        try {
+                            out = tryGetCSVname(fileName, "^([a-zA-Z0-9_\\.-]+).csv$");
+                        } catch (InvalidFileNameException e) {
+                            System.err.println("Неверное имя файла: " + fileName);
+                            System.err.println("Имя файла по умолчанию: " + defaulFileName);
+                            out = defaulFileName;
+                        }
+                        break;
+                    }
+                    default: {
+                        System.err.println(String.format("Введен не правильный ключ %s", argument));
+                        throw new MyInvalidArgumentException();
+                    }
                 }
             }
         }
