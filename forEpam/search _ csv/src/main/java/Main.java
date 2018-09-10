@@ -9,6 +9,10 @@ import main.java.csv.InputOutput;
 
 import java.io.IOException;
 
+/**
+ * Main method get args : -in -out -enc -col -exp
+ * example: -in in.csv -out out.csv -enc UTF8 -col ujIY7wMB -exp 1913985098
+ */
 public class Main {
     public static void main(String[] args) {
         Args arguments = new Args(args);

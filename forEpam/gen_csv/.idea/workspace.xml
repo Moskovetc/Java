@@ -15,8 +15,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="78" />
+            <state relative-caret-position="85">
+              <caret line="6" selection-start-line="6" selection-end-line="9" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -27,12 +27,11 @@
       <file leaf-file-name="FileCSV.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/csv/FileCSV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="34" column="70" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
+            <state relative-caret-position="85">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#createOutputFile#0;class#FileCSV#0" />
-                <element signature="method#generateCSVFile#0;class#FileCSV#0" />
               </folding>
             </state>
           </provider>
@@ -41,11 +40,17 @@
       <file leaf-file-name="Args.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cli/Args.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-94">
-              <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="42" />
+            <state relative-caret-position="323">
+              <caret line="28" column="95" selection-start-line="28" selection-start-column="95" selection-end-line="28" selection-end-column="95" />
               <folding>
-                <element signature="e#2163#2164#0" expanded="true" />
-                <element signature="e#2189#2190#0" expanded="true" />
+                <element signature="e#2375#2376#0" expanded="true" />
+                <element signature="e#2401#2402#0" expanded="true" />
+                <element signature="e#2428#2429#0" expanded="true" />
+                <element signature="e#2454#2455#0" expanded="true" />
+                <element signature="e#2481#2482#0" expanded="true" />
+                <element signature="e#2507#2508#0" expanded="true" />
+                <element signature="e#2537#2538#0" expanded="true" />
+                <element signature="e#2563#2564#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,8 +59,8 @@
       <file leaf-file-name="InvalidFileNameException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cli/InvalidFileNameException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="51">
+              <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -75,16 +80,14 @@
       <file leaf-file-name="RandomDataGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/csv/RandomDataGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="238">
+              <caret line="100" column="47" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#generateRndString#0;class#RandomDataGenerator#0" />
                 <element signature="method#generateRndDate#0;class#RandomDataGenerator#0" />
                 <element signature="method#generateRndInteger#0;class#RandomDataGenerator#0" />
                 <element signature="method#generateRndFloat#0;class#RandomDataGenerator#0" />
-                <element signature="method#generateRndColumn#0;class#RandomDataGenerator#0" />
-                <element signature="method#generateRndColumnsLinkedList#0;class#RandomDataGenerator#0" />
                 <element signature="method#generateRndColumnsRow#0;class#RandomDataGenerator#0" />
                 <element signature="method#generateRndRow#0;class#RandomDataGenerator#0" />
               </folding>
@@ -114,13 +117,13 @@
         <option value="$PROJECT_DIR$/src/main/java/csv/Column.java" />
         <option value="$PROJECT_DIR$/src/main/java/cli/NotEnoughArgumentsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/cli/NotEnoughArguments.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cli/InvalidFileNameException.java" />
         <option value="$PROJECT_DIR$/src/main/java/cli/MyInvalidArgumentException.java" />
         <option value="$PROJECT_DIR$/src/main/java/csv/Row.java" />
-        <option value="$PROJECT_DIR$/src/main/java/csv/RandomDataGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cli/Args.java" />
         <option value="$PROJECT_DIR$/src/main/java/csv/FileCSV.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cli/Args.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cli/InvalidFileNameException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/csv/RandomDataGenerator.java" />
       </list>
     </option>
   </component>
@@ -265,6 +268,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -436,6 +440,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="988" selection-start-line="988" selection-end-line="988" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/csv/FileCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#createOutputFile#0;class#FileCSV#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Args.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="28" column="95" selection-start-line="28" selection-start-column="95" selection-end-line="28" selection-end-column="95" />
+          <folding>
+            <element signature="e#2375#2376#0" expanded="true" />
+            <element signature="e#2401#2402#0" expanded="true" />
+            <element signature="e#2428#2429#0" expanded="true" />
+            <element signature="e#2454#2455#0" expanded="true" />
+            <element signature="e#2481#2482#0" expanded="true" />
+            <element signature="e#2507#2508#0" expanded="true" />
+            <element signature="e#2537#2538#0" expanded="true" />
+            <element signature="e#2563#2564#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cli/InvalidFileNameException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/csv/Column.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -448,63 +494,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/csv/RandomDataGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="238">
+          <caret line="100" column="47" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#generateRndString#0;class#RandomDataGenerator#0" />
             <element signature="method#generateRndDate#0;class#RandomDataGenerator#0" />
             <element signature="method#generateRndInteger#0;class#RandomDataGenerator#0" />
             <element signature="method#generateRndFloat#0;class#RandomDataGenerator#0" />
-            <element signature="method#generateRndColumn#0;class#RandomDataGenerator#0" />
-            <element signature="method#generateRndColumnsLinkedList#0;class#RandomDataGenerator#0" />
             <element signature="method#generateRndColumnsRow#0;class#RandomDataGenerator#0" />
             <element signature="method#generateRndRow#0;class#RandomDataGenerator#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="988" selection-start-line="988" selection-end-line="988" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/InvalidFileNameException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/csv/FileCSV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="34" column="70" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#createOutputFile#0;class#FileCSV#0" />
-            <element signature="method#generateCSVFile#0;class#FileCSV#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Args.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-94">
-          <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="42" />
-          <folding>
-            <element signature="e#2163#2164#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="78" />
+        <state relative-caret-position="85">
+          <caret line="6" selection-start-line="6" selection-end-line="9" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

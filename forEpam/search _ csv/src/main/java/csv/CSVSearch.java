@@ -16,6 +16,12 @@ public class CSVSearch {
         this.exp = exp;
     }
 
+    /**
+     * Search column
+     *
+     * @param columns
+     * @return object of Class Column with fields column number and column type
+     */
     private Column searchColumn(String[] columns) {
         Column column = new Column();
         int columnNumber = 0;
@@ -32,6 +38,15 @@ public class CSVSearch {
         return column;
     }
 
+    /**
+     * Search data in column by expression with type validation
+     *
+     * @param inputFile  read file
+     * @param outputFile write file
+     * @throws NumberFormatException if type invalid
+     * @throws IOException           if file busy
+     * @throws FileEmptyException    if file empty
+     */
     private void searchValue(BufferedReader inputFile, BufferedWriter outputFile) throws NumberFormatException, IOException, FileEmptyException {
         String line = inputFile.readLine();
         if (null != line) {

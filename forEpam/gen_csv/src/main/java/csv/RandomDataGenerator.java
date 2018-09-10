@@ -1,14 +1,16 @@
 package main.java.csv;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RandomDataGenerator {
     private List<Column> columnsList;
 
+    /**
+     * Method generate random string for CSV file
+     * @param maxLen maximum length of string
+     * @return random string
+     */
     private String generateRndString(int maxLen) {
         char[] symbols = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
         Random random = new Random();
@@ -39,6 +41,10 @@ public class RandomDataGenerator {
         return random.nextFloat();
     }
 
+    /**
+     * @param maxLen
+     * @return object of Column Class
+     */
     private Column generateRndColumn(int maxLen) {
         String[] types = {"String", "Date", "Integer", "Float"};
         Random random = new Random();
@@ -59,9 +65,14 @@ public class RandomDataGenerator {
         return null;
     }
 
+    /**
+     * Method set field colimnList
+     * @param numberOfColumn number of columns
+     * @param maxLen msxLen of string
+     */
     private void generateRndColumnsLinkedList(int numberOfColumn, int maxLen) {
         int i = 0;
-        List<Column> columns = new LinkedList<>();
+        List<Column> columns = new ArrayList<>();
         while (i < numberOfColumn) {
             columns.add(generateRndColumn(maxLen));
             i++;
@@ -70,6 +81,11 @@ public class RandomDataGenerator {
 
     }
 
+    /**
+     * @param numberOfColumns
+     * @param maxLen
+     * @return String random column row for write
+     */
     public String generateRndColumnsRow(int numberOfColumns, int maxLen) {
         generateRndColumnsLinkedList(numberOfColumns, maxLen);
         StringBuilder stringBuilder = new StringBuilder();
@@ -79,6 +95,11 @@ public class RandomDataGenerator {
         return stringBuilder.toString();
     }
 
+    /**
+     * @param numberOfColumns
+     * @param maxLen
+     * @return String random data row for write
+     */
     public String generateRndDataRow(int numberOfColumns, int maxLen) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < numberOfColumns; i++) {

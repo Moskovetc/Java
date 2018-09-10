@@ -4,6 +4,10 @@ import main.java.cli.Args;
 import main.java.cli.MyInvalidArgumentException;
 import main.java.csv.FileCSV;
 
+/**
+ * Main method get args : -len int -out String -col int -row int
+ * example: -len 10 -out out.csv -col 5 -row 5
+ */
 public class Main {
     public static void main(String[] args) {
         Args arguments = new Args();
